@@ -21,7 +21,7 @@ public class Ball : MonoBehaviour {
 			this.transform.position = paddle.transform.position + paddleToBallVector;
 			
 			if (Input.GetMouseButtonDown(0)) {
-				this.rigidbody2D.velocity = new Vector2(2f, 10f);
+				this.GetComponent<Rigidbody2D>().velocity = new Vector2(2f, 10f);
 				has_started = true;
 			}
 		}
@@ -33,8 +33,8 @@ public class Ball : MonoBehaviour {
 		// Ball does not trigger sound when a brick is destoyed
 		// Not 100% sure why, probably due to script execution order
 		if (has_started) {
-			audio.Play();
-			rigidbody2D.velocity += tweak;
+			GetComponent<AudioSource>().Play();
+			GetComponent<Rigidbody2D>().velocity += tweak;
 		}
 	}
 }
